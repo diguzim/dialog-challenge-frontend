@@ -33,7 +33,7 @@ export const GET_USER_LIST = gql`
 `;
 
 export const GET_USER_AND_ITS_FRIENDS = gql`
-  query GetUserListAndItsFriends($userId: String) {
+  query GetUserListAndItsFriends($userId: String!) {
     list(_id: $userId) {
       _id
       name
