@@ -10,7 +10,7 @@ The portal has 3 pages:
 2. The User details page, that shows the informations of a user and it's friends cards
 3. The search results page (there is a search text input in the upper part)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), with --template typescript.
 
 ## How to run this
 
