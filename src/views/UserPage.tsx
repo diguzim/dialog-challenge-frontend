@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_USER_AND_ITS_FRIENDS, User, UserList } from "../models";
 import { useParams } from "react-router-dom";
 import { CardsDisplayer, Paragraph, UserCard } from "../components";
+import { GenericApolloError, GenericLoading } from "../layouts";
 
 const UserRow = styled.div`
   display: flex;
@@ -28,17 +29,21 @@ function UserPage() {
   const { data, loading, error } = useQuery<UserList>(
     GET_USER_AND_ITS_FRIENDS,
     {
-      variables: { userId: userId },
+      variables: { userId },
     }
   );
 
+  if (error) {
+    return <GenericApolloError error={error} />;
+  }
+
   if (!data || loading) {
-    return <p>Loading...</p>;
+    return <GenericLoading />;
   }
 
   const user = data.list[0];
   if (!user) {
-    return <p>User not found</p>;
+    return <h1>User not found</h1>;
   }
 
   const friends = user.friends || ([] as User[]);

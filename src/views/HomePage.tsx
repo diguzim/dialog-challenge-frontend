@@ -2,17 +2,17 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_USER_LIST, UserList } from "../models";
 import { UserCard, CardsDisplayer } from "../components";
-import { GenericError } from ".";
+import { GenericApolloError, GenericLoading } from "../layouts";
 
 function HomePage() {
   const { data, loading, error } = useQuery<UserList>(GET_USER_LIST);
 
   if (error) {
-    <GenericError />;
+    return <GenericApolloError error={error} />;
   }
 
   if (!data || loading) {
-    return <p>Loading...</p>;
+    return <GenericLoading />;
   }
 
   const { list: userList } = data;

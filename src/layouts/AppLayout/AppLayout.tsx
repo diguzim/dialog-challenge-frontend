@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import TopBar from "./TopBar";
 
 const Spacer = styled.div`
   padding: 10px;
@@ -13,12 +12,7 @@ interface AppLayoutProps {
 function AppLayout(props: AppLayoutProps) {
   const { children } = props;
 
-  return (
-    <Spacer>
-      <TopBar />
-      {children}
-    </Spacer>
-  );
+  return <Spacer>{children}</Spacer>;
 }
 
 export default AppLayout;

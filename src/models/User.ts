@@ -19,8 +19,8 @@ export interface UserList {
 }
 
 export const GET_USER_LIST = gql`
-  query GetUserList {
-    list {
+  query GetUserList($searchTerm: String) {
+    list(name: $searchTerm) {
       _id
       name
       age

@@ -1,6 +1,13 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import { TextInput } from "../../components";
+import { TextInput } from "../components";
+
+const ClickableHeader = styled.h1`
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 const TextInputSpaced = styled(TextInput)`
   margin-left: 20px;
@@ -14,13 +21,19 @@ const Row = styled.div`
 `;
 
 function TopBar() {
+  const history = useHistory();
+
+  function navigateToHome() {
+    history.push("/");
+  }
+
   function searchUser(searchTerm: string) {
-    console.log("searchTerm", searchTerm);
+    history.push(`/search/${searchTerm}`);
   }
 
   return (
     <Row>
-      <h1>MySocial</h1>
+      <ClickableHeader onClick={navigateToHome}>MySocial</ClickableHeader>
       <TextInputSpaced placeholder="search" onEnterPressed={searchUser} />
     </Row>
   );
